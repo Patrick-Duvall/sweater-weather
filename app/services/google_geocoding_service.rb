@@ -14,7 +14,6 @@ class GoogleGeocodingService
       'key' => ENV['GOOGLE_API_KEY']
     }
     response = conn.get(path, params)
-    require "pry"; binding.pry
     info = JSON.parse(response.body)
     lat = info['results'].first['geometry']['location']['lat']
     lng = info['results'].first['geometry']['location']['lng']
