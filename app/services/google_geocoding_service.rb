@@ -1,14 +1,17 @@
 class GoogleGeocodingService
 
-  def initialize(citystate)
-    @city = citystate
+  def initialize
   end
 
-  def latlng
+  def self.latlng(address)
+    new.latlng(address)
+  end
+
+  def latlng(address)
     response = conn.get do |req|
                           req.url  '/maps/api/geocode/json'
                           req.params['key'] = ENV['GOOGLE_API_KEY']
-                          req.params['address'] = @city
+                          req.params['address'] = address
                         end
     info = JSON.parse(response.body)
     lat = info['results'].first['geometry']['location']['lat']
