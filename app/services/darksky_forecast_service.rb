@@ -7,12 +7,7 @@ class DarkskyForecastService
   def forecast(lat, lng)
     path = "/forecast/#{ENV['DARKSKY_API_KEY']}/#{lat},#{lng}"
     response = conn.get(path)
-    info = JSON.parse(response.body)
-    {
-      'currently' => info['currently'],
-      'hourly' => info['hourly'],
-      'daily' => info['daily']
-    }
+    JSON.parse(response.body)
   end
 
 private
