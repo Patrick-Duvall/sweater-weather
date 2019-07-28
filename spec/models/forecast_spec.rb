@@ -9,17 +9,30 @@ describe "forecast" do
 
   it "attributes" do
 
-    expect(@forecast.city).to eq('Denver')
-    expect(@forecast.state).to eq('CO')
-    expect(@forecast.brief_summary).to eq('Mostly Cloudy')
-    expect(@forecast.temp).to eq(86.76)
-    expect(@forecast.temp_high).to eq(87.16)
-    expect(@forecast.temp_low).to eq(67.37)
-    expect(@forecast.feels_like).to eq(83.45)
-    expect(@forecast.humidity).to eq(0.28)
-    expect(@forecast.visibility).to eq(3.7)
-    expect(@forecast.uv_index).to eq(6)
-    expect(@forecast.summary).to eq("Possible light rain this evening.")
+    current = @forecast.current
+    expect(current['city']).to eq('Denver')
+    expect(current['state']).to eq('CO')
+    expect(current['brief_summary']).to eq('Mostly Cloudy')
+    expect(current['temp']).to eq(86.76)
+    expect(current['temp_high']).to eq(87.16)
+    expect(current['temp_low']).to eq(67.37)
+    expect(current['feels_like']).to eq(83.45)
+    expect(current['humidity']).to eq(0.28)
+    expect(current['visibility']).to eq(3.7)
+    expect(current['uv_index']).to eq(6)
+    expect(current['summary']).to eq("Possible light rain this evening.")
+
+    # expect(@forecast.city).to eq('Denver')
+    # expect(@forecast.state).to eq('CO')
+    # expect(@forecast.brief_summary).to eq('Mostly Cloudy')
+    # expect(@forecast.temp).to eq(86.76)
+    # expect(@forecast.temp_high).to eq(87.16)
+    # expect(@forecast.temp_low).to eq(67.37)
+    # expect(@forecast.feels_like).to eq(83.45)
+    # expect(@forecast.humidity).to eq(0.28)
+    # expect(@forecast.visibility).to eq(3.7)
+    # expect(@forecast.uv_index).to eq(6)
+    # expect(@forecast.summary).to eq("Possible light rain this evening.")
   end
 
   it "hourly forecast" do
