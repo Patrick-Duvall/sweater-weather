@@ -8,7 +8,6 @@ class DarkskyForecastService
     path = "/forecast/#{ENV['DARKSKY_API_KEY']}/#{lat},#{lng}"
     response = conn.get(path)
     info = JSON.parse(response.body)
-    require "pry"; binding.pry
     {
       'currently' => info['currently'],
       'hourly' => info['hourly'],
