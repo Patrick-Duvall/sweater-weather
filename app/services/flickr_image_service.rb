@@ -9,8 +9,8 @@ class FlickrImageService
     info['photos']['photo'].map{|photo_info| photo_info['url_o']}
   end
 
-  def self.get_photos(lat, lng, limit)
-    new.get_photos(lat, lng, limit)
+  def self.get_photos(citystate)
+    new.get_photos(citystate)
   end
 
 private
