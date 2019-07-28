@@ -1,15 +1,4 @@
 class Forecast
-  attr_reader :city,
-              :state,
-              :brief_summary,
-              :temp,
-              :temp_high,
-              :temp_low,
-              :feels_like,
-              :humidity,
-              :visibility,
-              :uv_index,
-              :summary
   def initialize(weather_info, cityState)
     @weather_info = weather_info
     @location = cityState
@@ -54,12 +43,6 @@ class Forecast
       }
     end
   end
-
-  # expect(daily[1]['temp_high']).to eq(88.64)
-  # expect(daily[1]['temp_low']).to eq(62.77)
-  # expect(daily[1]['icon']).to eq("partly-cloudy-day")
-  # expect(daily[1]['chance_precip']).to eq(0.09)
-
 
 
 end
