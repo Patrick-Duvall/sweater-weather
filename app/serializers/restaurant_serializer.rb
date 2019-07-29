@@ -14,10 +14,13 @@ class RestaurantSerializer
   end
 
   def restaurants_info
-    @restaurants.map |restaurant| do
+    @restaurants.map do |restaurant|
       {'name' => restaurant.name,
         'address' => restaurant.address
       }
     end
+  end
+
+
 
 end

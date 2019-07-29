@@ -5,7 +5,7 @@ describe "munchies api" do
     expect(response).to be_successful
     info = JSON.parse(response.body)
     # require "pry"; binding.pry
-    expect(info['data']['destination']).to_not be_falsey
+    expect(info['data']['city']).to eq('pueblo,co')
     expect(info['data']['restaurants'].count).to eq(3)
     expect(info['data']['restaurants'][0]['name']).to eq("Kan's Kitchen")
     expect(info['data']['restaurants'][0]['address']).to eq("1620 S Prairie Ave, Pueblo, CO 81005")

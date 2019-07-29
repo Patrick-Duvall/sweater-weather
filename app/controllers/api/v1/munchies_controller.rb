@@ -11,7 +11,8 @@ class Api::V1::MunchiesController < ApplicationController
     yelp_service = YelpService.new(arrival_time, params['end'], params['food'])
     restaurants = yelp_service.get_restaurants
 
-    result = RestaurantSerializer.new(params['end'], restaurants)
+    serializer = RestaurantSerializer.new(params['end'], restaurants)
+    serialized = serializer.present_restaurants
     # conn = Faraday.new(:url => 'https://api.yelp.com') do |faraday|
     #   faraday.adapter  Faraday.default_adapter
     # end
@@ -26,11 +27,11 @@ class Api::V1::MunchiesController < ApplicationController
 
 
     # restaurants = JSON.parse(restaurant_info.body)
-    response = {"data" => {
-      'destination' => params['end'],
-      'restaurants' => restaurants['businesses']
-                }
-              }
-    render json: response
+    # response = {"data" => {
+    #   'destination' => params['end'],
+    #   'restaurants' => restaurants['businesses']
+    #             }
+    #           }
+    render json: serialized
   end
 end
