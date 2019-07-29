@@ -19,10 +19,14 @@ class Api::V1::MunchiesController < ApplicationController
       req.params['term'] = params['food']
       req.params['open_at'] = arrival_time
     end
+    restaurants = JSON.parse(restaurant_info.body)
 
-    # restaurant_info = Faraday.get('https://api.yelp.com/v3/businesses/search?term =food&location=pueblo,co&limit =3&open_at=1564420946')
-    # restaurants = JSON.parse(restaurant_info.body)
-    require "pry"; binding.pry
+    response = {"data" => {
+      'destination' => params['end'],
+      'restaurants' => restaurants['businesses']
+                }
+              }
 
+    render json: response
   end
 end
