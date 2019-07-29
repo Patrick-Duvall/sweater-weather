@@ -48,6 +48,7 @@ group :development, :test do
   gem 'pry'
   gem 'shoulda-matchers'
   gem 'simplecov'
+  gem 'webmock'
 
 end
 

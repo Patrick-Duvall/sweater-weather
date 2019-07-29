@@ -9,7 +9,7 @@ class Api::V1::MunchiesController < ApplicationController
 
     serializer = RestaurantSerializer.new(params['end'], restaurants)
     serialized = serializer.present_restaurants
-
+    require "pry"; binding.pry
     render json: serialized
   end
 end
