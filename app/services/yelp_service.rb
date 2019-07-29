@@ -6,15 +6,18 @@ class YelpService
   end
 
   def get_restaurants
-    conn.get do |req|
-      req.url '/v3/businesses/search'
-      req.headers['Authorization'] = "Bearer #{ENV['YELP_API_KEY']}"
-      req.params['location'] = @destination
-      req.params['limit'] = 3
-      req.params['term'] = @food_term
-      req.params['open_at'] = @arrival_time
-    end
-
+    restaurants = conn.get do |req|
+        req.url '/v3/businesses/search'
+        req.headers['Authorization'] = "Bearer #{ENV['YELP_API_KEY']}"
+        req.params['location'] = @destination
+        req.params['limit'] = 3
+        req.params['term'] = @food_term
+        req.params['open_at'] = @arrival_time
+      end
+      restaurant_info = JSON.parse(restaurants.body)['businesses']
+      restaurant_info.map{|info|Restaurant.new(info)}
+      require "pry"; binding.pry
+      # restaurants.
   end
 
   private

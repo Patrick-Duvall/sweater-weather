@@ -9,6 +9,7 @@ class Api::V1::MunchiesController < ApplicationController
     arrival_time = time_to_travel + current_time
 
     yelp_service = YelpService.new(arrival_time, params['end'], params['food'])
+    yelp_service.get_restaurants
 
     conn = Faraday.new(:url => 'https://api.yelp.com') do |faraday|
       faraday.adapter  Faraday.default_adapter
