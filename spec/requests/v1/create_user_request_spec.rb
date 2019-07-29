@@ -13,7 +13,7 @@ describe "users controller" do
     'Accept': 'application/json'
     }
     post '/api/v1/users', headers: headers, params: body.to_json
-    expect(response).to be_successful
+    expect(response.status).to eq(201)
     info = JSON.parse(response.body)
     expect(info['api_key']).to_not be_falsey
   end
