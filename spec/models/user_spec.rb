@@ -13,4 +13,13 @@ RSpec.describe User, type: :model do
      expect(user.api_key).to be_a(String)
      expect(user.api_key.length).to eq(32)
    end
+
+   describe "class methods" do
+     it ".email_in_use?" do
+       User.create!(email: 'a@b.com', password: '123pkd')
+       expect(User.email_in_use?('a@b.com')).to eq(true)
+       expect(User.email_in_use?('abc@b.com')).to eq(false)
+     end
+
+   end
 end
