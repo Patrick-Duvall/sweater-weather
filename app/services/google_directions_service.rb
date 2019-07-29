@@ -13,8 +13,6 @@ class GoogleDirectionsService
     end
     directions = JSON.parse(response.body)
     time_to_travel = directions['routes'].first['legs'].first['duration']['value']
-    current_time = Time.now.to_i
-    time_to_travel + current_time
   end
 
 
