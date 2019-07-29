@@ -1,7 +1,7 @@
 
 require "rails_helper"
 
-describe "weather forecast controller" do
+describe "users controller" do
   it "returns an API key" do
     body = {
     "email": "whatever@example.com",
