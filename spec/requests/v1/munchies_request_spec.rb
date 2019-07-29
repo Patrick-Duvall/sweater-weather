@@ -4,10 +4,8 @@ describe "munchies api" do
     get '/api/v1/munchies?start=denver,co&end=pueblo,co&food=chinese'
     expect(response).to be_successful
     info = JSON.parse(response.body)
-    # require "pry"; binding.pry
     expect(info['data']['city']).to eq('pueblo,co')
     expect(info['data']['restaurants'].count).to eq(3)
-
   end
 
 end

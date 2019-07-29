@@ -12,9 +12,8 @@ class GoogleDirectionsService
       req.params['destination'] = @end
     end
     directions = JSON.parse(response.body)
-    time_to_travel = directions['routes'].first['legs'].first['duration']['value']
+    directions['routes'].first['legs'].first['duration']['value']
   end
-
 
 private
   def conn
@@ -22,7 +21,6 @@ private
       faraday.adapter  Faraday.default_adapter
       faraday.params['key'] = ENV['GOOGLE_API_KEY']
     end
-
   end
 
 end

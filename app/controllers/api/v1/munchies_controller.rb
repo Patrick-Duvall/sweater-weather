@@ -1,6 +1,5 @@
 class Api::V1::MunchiesController < ApplicationController
   def index
-
     google_directions_service = GoogleDirectionsService.new(params['start'], params['end'])
     travel_time = google_directions_service.get_time
     arrival_time = travel_time + Time.now.to_i

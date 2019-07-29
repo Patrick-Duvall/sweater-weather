@@ -21,8 +21,7 @@ class YelpService
   private
 
   def conn
-
-    conn = Faraday.new(:url => 'https://api.yelp.com') do |faraday|
+    Faraday.new(:url => 'https://api.yelp.com') do |faraday|
       faraday.adapter  Faraday.default_adapter
     end
 
