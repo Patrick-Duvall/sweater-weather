@@ -11,14 +11,16 @@ class GoogleDirectionsService
       req.params['origin'] = @start
       req.params['destination'] = @end
     end
-    require "pry"; binding.pry
     directions = JSON.parse(response.body)
+    time_to_travel = directions['routes'].first['legs'].first['duration']['value']
+    current_time = Time.now.to_i
+    time_to_travel + current_time
   end
 
-  directions = JSON.parse(directions_info.body)
-  time_to_travel = directions['routes'].first['legs'].first['duration']['value']
-  current_time = Time.now.to_i
-  arrival_time = time_to_travel + current_time
+  # directions = JSON.parse(directions_info.body)
+  # time_to_travel = directions['routes'].first['legs'].first['duration']['value']
+  # current_time = Time.now.to_i
+  # arrival_time = time_to_travel + current_time
 
   # Faraday.get("https://maps.googleapis.com/maps/api/directions/json?origin=#{params['start']}&destination=#{params['end']}&key=#{ENV['GOOGLE_API_KEY']}")
 
