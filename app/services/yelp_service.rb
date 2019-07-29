@@ -16,8 +16,6 @@ class YelpService
       end
       restaurant_info = JSON.parse(restaurants.body)['businesses']
       restaurant_info.map{|info|Restaurant.new(info)}
-      require "pry"; binding.pry
-      # restaurants.
   end
 
   private
