@@ -2,14 +2,13 @@ class Api::V1::SessionsController < ApplicationController
   protect_from_forgery with: :null_session
 
   def create
-    require "pry"; binding.pry
     user = User.find_by(email: params['email'])
-    api_key = user.api_key
-    #TODO findout If I need to make a sessionhere
-    render json: {'api_key': api_key}
+    if user.nil? || !user.authenticate(params['password'])
+      render json: {'data': "Bad Username or Password"}, status: 404
+    else
+      api_key = user.api_key
+      render json: {'api_key': api_key}, status:200
+    end
   end
-
-  private
-  params.permit(:email, :password)
 
 end
