@@ -1,7 +1,10 @@
 class RoadTripSerializer
 
-  def self.present_forecast(forecast)
+  def self.present_forecast(forecast, time)
     {
+      "meta":{
+        "travel_time_to": time
+      },
       "data": {
         "type": "forecast",
         "id": "1",

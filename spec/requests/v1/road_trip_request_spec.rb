@@ -17,6 +17,7 @@ describe "road trip controller" do
     expect(response).to be_successful
     info = JSON.parse(response.body)
     expect(info['data']['attributes']['forecast_on_arrival']).to_not be_falsey
+    expect(info['meta']['travel_time_to']).to_not be_falsey
     expect(info['data']['id']).to eq('1')
   end
 end
