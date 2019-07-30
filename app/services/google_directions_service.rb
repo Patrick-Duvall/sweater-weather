@@ -1,15 +1,14 @@
 class GoogleDirectionsService
 
-  def initialize(start, stop)
-    @start = start
-    @end = stop
+  def self.get_time(start, stop)
+    new.get_time(start, stop)
   end
 
-  def get_time
+  def get_time(start, stop)
     response = conn.get do |req|
       req.url '/maps/api/directions/json'
-      req.params['origin'] = @start
-      req.params['destination'] = @end
+      req.params['origin'] = start
+      req.params['destination'] = stop
     end
     directions = JSON.parse(response.body)
     directions['routes'].first['legs'].first['duration']['value']
@@ -22,5 +21,4 @@ private
       faraday.params['key'] = ENV['GOOGLE_API_KEY']
     end
   end
-
 end
