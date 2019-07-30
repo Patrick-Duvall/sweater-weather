@@ -10,8 +10,7 @@ class GoogleDirectionsService
       req.params['origin'] = start
       req.params['destination'] = stop
     end
-    directions = JSON.parse(response.body)
-    DirectionsTime.new(directions)
+    JSON.parse(response.body)
   end
 
 private

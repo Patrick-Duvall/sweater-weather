@@ -5,7 +5,8 @@ class Api::V1::RoadTripController < ApplicationController
     if bad_api_key?(params['api_key'])
       render json: {"data":"Unauthorized Request"}, status: 401
     else
-      time = GoogleDirectionsService.get_time(params['origin'], params['destination'])
+      time_info = GoogleDirectionsService.get_time(params['origin'], params['destination'])
+      time = DirectionsTime.new(time_info)
       latlng = GoogleGeocodingService.latlng(params['origin'])
       forecast_time = time.seconds + Time.now.to_i
       forecast_info = DarkskyForecastService.future_forecast(latlng[0], latlng[1], forecast_time)
