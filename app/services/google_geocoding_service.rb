@@ -15,9 +15,6 @@ class GoogleGeocodingService
     }
     response = conn.get(path, params)
     JSON.parse(response.body)
-    # lat = info['results'].first['geometry']['location']['lat']
-    # lng = info['results'].first['geometry']['location']['lng']
-    # [lat,lng]
   end
 
 private
