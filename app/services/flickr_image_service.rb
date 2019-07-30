@@ -20,7 +20,6 @@ private
       faraday.params['api_key'] = ENV['FLICKR_API_KEY']
       faraday.params['method'] = 'flickr.photos.search'
       faraday.params['content_type'] = 1
-      faraday.params['tags'] = 'skyline,park'
       faraday.params['extras'] = 'url_o'
       faraday.params['format'] = 'json'
       faraday.params['safe_search'] = '0'
