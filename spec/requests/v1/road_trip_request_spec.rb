@@ -5,16 +5,15 @@ require "rails_helper"
 describe "road trip controller" do
 
   before :each do
-    User.create(email: 'abc@gmail.com',
-                password: 'a343',
-                api_key: "jgn983hy48thw9begh98h4539h4")
+    @user = User.create(email: 'abc@gmail.com',
+                password: 'a343')
   end
 
   it "returns a forcast for a destination" do
     body = {
       "origin": "Denver,CO",
       "destination": "Pueblo,CO",
-      "api_key": "jgn983hy48thw9begh98h4539h4"
+      "api_key": @user.api_key
     }
     headers = {
       'Content-Type': 'application/json',
