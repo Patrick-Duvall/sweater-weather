@@ -3,7 +3,7 @@
 require "rails_helper"
 
 describe "road trip controller" do
-  it "returns a forcst for a destination" do
+  it "returns a forcast for a destination" do
     body = {
       "origin": "Denver,CO",
       "destination": "Pueblo,CO",
@@ -16,7 +16,7 @@ describe "road trip controller" do
     post '/api/v1/road_trip', headers: headers, params: body.to_json
     expect(response).to be_successful
     info = JSON.parse(response.body)
-    expect(info['data']['attributes']['forecast']).to_not be_falsey
-    expect(info['data']['attributes']['travel_time']).to_not be_falsey
+    expect(info['data']['attributes']['forecast_on_arrival']).to_not be_falsey
+    expect(info['data']['id']).to eq('1')
   end
 end
