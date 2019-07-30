@@ -21,7 +21,5 @@ describe "flickr image service" do
     expect(photos.second['secret']).to eq('3015493383')
     expect(photos.second['farm']).to eq(66)
     expect(photos.second['title']).to eq('Civic Center Park - Denver, Colorado')
-
   end
-
 end
