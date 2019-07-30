@@ -30,6 +30,8 @@ gem 'faraday'
 
 gem 'figaro'
 
+gem 'webmock'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
