@@ -16,6 +16,7 @@ describe "road trip controller" do
     post '/api/v1/road_trip', headers: headers, params: body.to_json
     expect(response).to be_successful
     info = JSON.parse(response.body)
+    require "pry"; binding.pry
     expect(info['data']['attributes']['forecast_on_arrival']).to_not be_falsey
     expect(info['meta']['travel_time_to']).to_not be_falsey
     expect(info['data']['id']).to eq('1')

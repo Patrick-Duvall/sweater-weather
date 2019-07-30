@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Directions, type: :model do
+RSpec.describe DirectionsTime, type: :model do
    describe "attributes" do
      it "attributes" do
        info = {"routes"=>
@@ -17,7 +17,7 @@ RSpec.describe Directions, type: :model do
            }]
          }]
        }
-       directions = Directions.new(info)
+       directions = DirectionsTime.new(info)
        expect(directions.seconds).to eq(6413)
        expect(directions.time_string).to eq("1 hour 47 mins")
 

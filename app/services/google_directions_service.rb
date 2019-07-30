@@ -11,11 +11,7 @@ class GoogleDirectionsService
       req.params['destination'] = stop
     end
     directions = JSON.parse(response.body)
-    require "pry"; binding.pry
-    Directions.new(directions)
-    # unix_time = directions['routes'].first['legs'].first['duration']['value']
-    # time_string = directions['routes'].first['legs'].first['duration']['text']
-
+    DirectionsTime.new(directions)
   end
 
 private
