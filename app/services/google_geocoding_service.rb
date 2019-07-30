@@ -3,21 +3,18 @@ class GoogleGeocodingService
   def initialize
   end
 
-  def self.latlng(address)
-    new.latlng(address)
+  def self.get_city_info(address)
+    new.get_city_info(address)
   end
 
-  def latlng(address)
+  def get_city_info(address)
     path = '/maps/api/geocode/json'
     params = {
       'address' => address,
       'key' => ENV['GOOGLE_API_KEY']
     }
     response = conn.get(path, params)
-    info = JSON.parse(response.body)
-    lat = info['results'].first['geometry']['location']['lat']
-    lng = info['results'].first['geometry']['location']['lng']
-    [lat,lng]
+    JSON.parse(response.body)
   end
 
 private
