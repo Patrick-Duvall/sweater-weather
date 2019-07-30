@@ -1,12 +1,15 @@
 class FlickrImageService
 
   def get_photos(citystate)
-    city = citystate.split(',')[0]
+    city = City.find_or_create_by(querystring: citystate)
+
     response =  conn.get do |req|
-                  req.params['tags'] = "#{city},skyline,park"
+                  req.params['tags'] = "#{city.city},skyline,park"
+                  req.params['lat'] = city.lat
+                  req.params['lon'] = city.lng
+                  req.params['radius'] = 1
                 end
-    info = JSON.parse(response.body)
-    info['photos']['photo'].map{|photo_info| photo_info['url_o']}
+    JSON.parse(response.body)
   end
 
   def self.get_photos(citystate)
@@ -25,7 +28,7 @@ private
       faraday.params['safe_search'] = '0'
       faraday.params['nojsoncallback'] = '1'
       faraday.params['tag_mode'] = 'all'
-      faraday.params['per_page'] = 5
+      faraday.params['per_page'] = 10
     end
   end
 
