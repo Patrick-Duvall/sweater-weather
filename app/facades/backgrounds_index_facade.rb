@@ -13,7 +13,7 @@ class BackgroundsIndexFacade
 
   def get_images(location)
     images_info = Rails.cache.fetch("images-#{location}", expires_in: 24.hours) do
-      FlickrImageService.get_photos(params['location'])
+      FlickrImageService.get_photos(@location)
     end
     images_info['photos']['photo'].map{|info| Image.new(info)}
   end
