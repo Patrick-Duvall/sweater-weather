@@ -9,12 +9,18 @@ class Api::V1::RoadTripController < ApplicationController
       time = DirectionsTime.new(time_info)
       city = City.find_or_create_by(querystring: params['destination'])
       forecast_time = time.seconds.to_i + Time.now.to_i
-      forecast_info = DarkskyForecastService.future_forecast(city.lat, city.lng, forecast_time)
-      forecast = Forecast.new(forecast_info, params['destination'])
+      future_weather = Rails.cache.fetch("future-forecast-params#{['location']}", expires_in: 15.minutes) do
+         DarkskyForecastService.future_forecast(city.lat, city.lng, forecast_time)
+       end
+      forecast = Forecast.new(future_weather, params['destination'])
       forecast_to_present = RoadTripSerializer.present_forecast(forecast, time)
       render json: forecast_to_present, status: 200
     end
   end
+  #
+  # weather = Rails.cache.fetch("forecast-params#{['location']}", expires_in: 15.minutes) do
+  #   DarkskyForecastService.forecast(city.lat,city.lng)
+  # end
 
   private
 
