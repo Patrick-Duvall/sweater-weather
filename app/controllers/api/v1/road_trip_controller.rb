@@ -17,10 +17,6 @@ class Api::V1::RoadTripController < ApplicationController
       render json: forecast_to_present, status: 200
     end
   end
-  #
-  # weather = Rails.cache.fetch("forecast-params#{['location']}", expires_in: 15.minutes) do
-  #   DarkskyForecastService.forecast(city.lat,city.lng)
-  # end
 
   private
 
