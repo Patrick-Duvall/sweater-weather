@@ -15,6 +15,5 @@ class Api::V1::RoadTripController < ApplicationController
   def bad_api_key?(key)
     User.find_by(api_key: key).nil?
   end
-
-
+  
 end
