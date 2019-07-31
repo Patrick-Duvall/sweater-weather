@@ -3,7 +3,7 @@ require "rails_helper"
 describe GoogleDirectionsService do
   before :each do
     directions = File.read('fixtures/denver_to_pueblo_directions.json')
-    stub_request(:get, "https://maps.googleapis.com/maps/api/directions/json?origin=denver,co&destination=pueblo,co&key=#{ENV['GOOGLE_API_KEY']}").with( body: directions)
+    stub_request(:get, "https://maps.googleapis.com/maps/api/directions/json?origin=denver,co&destination=pueblo,co&key=#{ENV['GOOGLE_API_KEY']}").to_return( body: directions)
     @info = GoogleDirectionsService.get_time('denver,co','pueblo,co')
   end
 

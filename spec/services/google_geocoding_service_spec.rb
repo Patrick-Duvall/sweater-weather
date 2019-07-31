@@ -5,7 +5,7 @@ describe "Google Geocoding Service" do
 
   before :each do
     city_location = File.read('fixtures/denver_flicker_5_images.json')
-    stub_request(:get, "https://maps.googleapis.com/maps/api/geocode/json?address=denver%2Cco&key=#{ENV['GOOGLE_API_KEY']}").with( body: city_location)
+    stub_request(:get, "https://maps.googleapis.com/maps/api/geocode/json?address=denver%2Cco&key=#{ENV['GOOGLE_API_KEY']}").to_return( body: city_location)
     @info = GoogleGeocodingService.get_city_info("denver,co")
   end
 
