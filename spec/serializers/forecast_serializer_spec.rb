@@ -11,6 +11,4 @@ describe "ForecastSerializer " do
     expect(result['data']['hourly'].count).to eq(8)
     expect(result['data']['daily'].count).to eq(5)
   end
-
-  
 end

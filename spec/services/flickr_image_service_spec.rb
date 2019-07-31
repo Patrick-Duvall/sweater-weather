@@ -5,7 +5,6 @@ describe "flickr image service" do
   before :each do
     images = File.read('fixtures/denver_flicker_5_images.json')
     stub_request(:get, "https://api.flickr.com/services/rest?api_key=#{ENV['FLICKR_API_KEY']}&content_type=1&extras=url_o&format=json&lat=39.7392358&lon=-104.990251&method=flickr.photos.search&nojsoncallback=1&per_page=5&radius=1&safe_search=0&tag_mode=all&tags=Denver%2Cskyline%2Cpark").to_return( body: images)
-    @info = FlickrImageService.get_photos('denver,co')
   end
 
   it "#get_photos" do
