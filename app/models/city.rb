@@ -1,7 +1,6 @@
 class City < ApplicationRecord
   after_create :update_info
 
-
   private
   def update_info
     response = GoogleGeocodingService.get_city_info(querystring)

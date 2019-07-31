@@ -8,7 +8,6 @@ class User < ApplicationRecord
     !User.find_by(email: email).nil?
   end
 
-
   private
   def add_api_key
     self.update(api_key: SecureRandom.hex)
