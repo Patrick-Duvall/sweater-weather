@@ -4,7 +4,8 @@ describe "ForecastSerializer " do
   it "#present_forecast" do
     info = File.read('fixtures/weather_for_a_day_denver.json')
     forecast_info = JSON.parse(info)
-    forecast = Forecast.new(forecast_info, 'denver,co')
+    city = City.find_or_create_by(querystring: 'denver,co')
+    forecast = Forecast.new(forecast_info, city)
     result = ForecastSerializer.present_forecast(forecast)
     expect(result['data']['current']['summary']).to eq("Possible light rain this evening.")
     expect(result['data']['current']['brief_summary']).to eq("Mostly Cloudy")

@@ -6,7 +6,7 @@ class ForecastShowFacade
 
   def present_forecast
     city = get_city
-     forecast= get_forecast(city)
+    forecast= get_forecast(city)
     ForecastSerializer.present_forecast(forecast)
   end
 
@@ -20,7 +20,7 @@ private
     weather = Rails.cache.fetch("forecast-#{@location}", expires_in: 15.minutes) do
       DarkskyForecastService.forecast(city.lat,city.lng)
     end
-    Forecast.new(weather, @location)
+    Forecast.new(weather, city)
   end
 
 end

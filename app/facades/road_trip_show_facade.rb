@@ -26,7 +26,7 @@ end
   def get_weather(city, time)
     forecast_time = time.seconds.to_i + Time.now.to_i
     future_weather = DarkskyForecastService.future_forecast(city.lat, city.lng, forecast_time)
-    Forecast.new(future_weather, @destination)
+    Forecast.new(future_weather, city)
   end
 
 end

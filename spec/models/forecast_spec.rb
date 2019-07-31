@@ -4,7 +4,8 @@ describe "forecast" do
   before :each do
     info = File.read('fixtures/weather_for_a_day_denver.json')
     @weather_info = JSON.parse(info)
-    @forecast = Forecast.new(@weather_info, 'denver,co')
+    city = City.find_or_create_by(querystring: 'denver,co')
+    @forecast = Forecast.new(@weather_info, city )
   end
 
   it "attributes" do
