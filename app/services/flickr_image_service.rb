@@ -2,7 +2,6 @@ class FlickrImageService
 
   def get_photos(citystate)
     city = City.find_or_create_by(querystring: citystate)
-
     response =  conn.get do |req|
                   req.params['tags'] = "#{city.city},skyline,park"
                   req.params['lat'] = city.lat
