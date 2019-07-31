@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe "ForecastSerializer " do
-  it "#present_images" do
+  it "#present_forecast" do
     info = File.read('fixtures/weather_for_a_day_denver.json')
     forecast_info = JSON.parse(info)
     forecast = Forecast.new(forecast_info, 'denver,co')
