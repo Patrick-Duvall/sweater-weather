@@ -17,7 +17,7 @@ class Forecast
         'feels_like' => feels_like,
         'humidity' => @weather_info['currently']['humidity'],
         'visibility' => @weather_info['currently']['visibility'],
-        'uv_index' => uv_index,
+        'uv_index' => uv_index(@weather_info['currently']['uvIndex']),
         'summary' => @weather_info['hourly']['summary']
       }
   end
@@ -44,33 +44,33 @@ class Forecast
       }
     end
   end
+  #What is the best way to test a private method?
+  def hour_time(unix_time)
+    time = Time.at(unix_time)
+    hour_string = time.strftime("%l %p")
+    hour_string[0] = '' if hour_string[0] == ' '
+    hour_string
+  end
+
+  def uv_index(index)
+    case index
+    when 1..2
+      "#{index}, Low"
+    when 3..5
+      "#{index}, Medium"
+    when 6..7
+      "#{index}, High"
+    when 8..10
+      "#{index}, Very High"
+    else
+      "#{index}, Extremely High"
+    end
+  end
 
 private
 
 def feels_like
   @weather_info['currently']['temperature'] - @weather_info['currently']['windSpeed']
 end
-
-def uv_index
-  index = @weather_info['currently']['uvIndex']
-  case index
-  when 1..2
-    "#{index}, Low"
-  when 3..5
-    "#{index}, Medium"
-  when 6..7
-    "#{index}, High"
-  when 8..10
-    "#{index}, Very High"
-  else
-    "#{index}, Extremely High"
-  end
-end
-
-def hour_time(unix_time)
-  time = Time.at(unix_time)
-  time.strftime("%l %p")
-end
-
 
 end
