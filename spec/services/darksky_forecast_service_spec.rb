@@ -9,20 +9,14 @@ describe "darksky forecast service" do
     future_forecast = File.read('fixtures/new_york_future_forecast.json')
     stub_request(:get, "https://api.darksky.net/forecast/#{ENV['DARKSKY_API_KEY']}/42.3601,-71.0589,1564584861").to_return( body: future_forecast)
     @future_forecast = DarkskyForecastService.future_forecast(42.3601, -71.0589, 1564584861)
-
   end
-
-  # feels_like": 76.02,
-  #           "humidity": 0.33,
-  #           "visibility": 6.123,
-  #           "uv_index": 1,
 
   it "#forecast" do
     @forecast = DarkskyForecastService.forecast(39.7392358, -104.990251)
     expect(@forecast['currently']).to be_a(Hash)
     expect(@forecast['currently']['summary']).to eq("Mostly Cloudy")
     expect(@forecast['currently']['temperature']).to eq(86.76)
-    expect(@forecast['currently']['windSpeed']).to eq(3.31) 
+    expect(@forecast['currently']['windSpeed']).to eq(3.31)
     expect(@forecast['currently']['humidity']).to eq(0.28)
     expect(@forecast['currently']['visibility']).to eq(3.7)
     expect(@forecast['currently']['uvIndex']).to eq(6)
