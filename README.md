@@ -7,7 +7,7 @@ Sweater weather is a RESTFUL API built using Rails 5.2 to provide weather foreca
 - Darksky API, to get forecast information for a city
 - Flickr API, to get background Images for a city.
 
-The Sweater Weather API is hosted at https://sweater-weather-pd.herokuapp.com/. It can be used in the following ways:
+The Sweater Weather API is hosted at sweater-weather-pd.herokuapp.com/. It can be used in the following ways:
 
 ## Get the forecast for a given city
 ```
